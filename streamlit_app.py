@@ -5,9 +5,8 @@ import pickle
 from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Dense, Dropout, Embedding, LSTM, Add
 from tensorflow.keras.preprocessing.text import Tokenizer
-
+from tensorflow.keras.layers import Input, Dense, Dropout, Embedding, LSTM, Add
 import io
 
 # Load model and tokenizer
@@ -76,14 +75,55 @@ def predict_caption(model, image, tokenizer, max_length):
     return in_text[8:-6]
 
 def main():
-    st.title("Image Captioning Project")
+    st.set_page_config(page_title="Image Captioning Project", page_icon=":camera:", layout="centered")
+
+    st.markdown("""
+        <style>
+        .title {
+            text-align: center;
+            font-size: 36px;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+        }
+        .description {
+            text-align: center;
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .upload-section {
+            text-align: center;
+        }
+        .caption {
+            text-align: center;
+            font-size: 24px;
+            font-family: 'Arial', sans-serif;
+            color: #007BFF;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    st.markdown('<div class="title">Image Captioning Project</div>', unsafe_allow_html=True)
+
+    st.markdown("""
+        <div class="description">
+            This application allows you to upload an image, and it predicts a caption for the image using a deep learning model trained on a dataset of images and their corresponding captions. It demonstrates the application of AI in understanding and describing visual content.
+            <br><br>
+            Created as a project to showcase image captioning technology using Streamlit, TensorFlow, and Python.
+        </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown('<div class="upload-section">Upload an image to predict a caption:</div>', unsafe_allow_html=True)
     
-    st.write("Upload an image to predict a caption:")
     uploaded_file = st.file_uploader("Choose an image...", type="jpg")
     
     if uploaded_file is not None:
         st.image(uploaded_file, caption='Uploaded Image.', use_column_width=True)
-        st.write("")
         st.write("Classifying...")
 
         image = uploaded_file.read()
@@ -91,15 +131,7 @@ def main():
         features = extract_features(processed_image)
         caption = predict_caption(model, features, tokenizer, max_length)
         
-        st.write(f"**Predicted Caption:** {caption}")
-
-    st.write("""
-        **About This Project**
-
-        This application allows you to upload an image, and it predicts a caption for the image using a deep learning model trained on a dataset of images and their corresponding captions. It demonstrates the application of AI in understanding and describing visual content.
-
-        Created as a project to showcase image captioning technology using Streamlit, TensorFlow, and Python.
-    """)
+        st.markdown(f'<div class="caption"><strong>Predicted Caption:</strong> {caption}</div>', unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
