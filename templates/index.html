@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Captioning Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .upload-form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .image-preview {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Image Captioning Project</h1>
+
+        <div class="upload-form">
+            <form id="upload-form" action="/predict" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" id="file" accept="image/*" required>
+                <br><br>
+                <button type="submit">Upload Image</button>
+            </form>
+        </div>
+
+        <div class="image-preview" id="image-preview" style="display: none;">
+            <img id="uploaded-image" src="#" alt="Uploaded Image" style="max-width: 100%; border-radius: 8px;">
+        </div>
+
+        <div id="result">
+
+        </div>
+
+        <div>
+            <h3>About This Project</h3>
+            <p>This website allows you to upload an image, and it predicts a caption for the image using a deep learning model trained on a dataset of images and their corresponding captions. It demonstrates the application of AI in understanding and describing visual content.</p>
+            <p>Created as a project to showcase image captioning technology using Flask, TensorFlow, and Python.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var form = e.target;
+            var formData = new FormData(form);
+
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                var resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = '<p><strong>Predicted Caption:</strong> ' + data.caption + '</p>';
+                
+                var imagePreviewDiv = document.getElementById('image-preview');
+                var uploadedImage = document.getElementById('uploaded-image');
+                uploadedImage.src = URL.createObjectURL(form.elements.file.files[0]);
+                imagePreviewDiv.style.display = 'block';
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+
+</html>
+
