@@ -12,7 +12,6 @@ https://image-captioning-website.streamlit.app/
 - Upload an image and receive a predicted caption.
 - Uses a pre-trained VGG16 model to extract image features.
 - Deep learning model trained on a dataset of images and captions.
-- 
 ## Demo
 Visit this link for demo, Working of website and model.
 ```
