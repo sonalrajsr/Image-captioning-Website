@@ -38,3 +38,16 @@ pip install -r requirements.txt
 - Download the pre-trained model weights and necessary files:
 - Place the model_weights_epoch_1.h5 file in the model directory.
 - Place the all_captions.pkl file in the project root directory.
+
+## Usage
+To start the Streamlit application, run the following command:
+``` bash
+streamlit run streamlit_app.py
+```
+
+## Model Details
+The model architecture includes:
+
+- Image Feature Extractor: VGG16 pre-trained on ImageNet.
+- Text Processing: Tokenizer for converting text to sequences and embedding layers.
+- Caption Generator: Combination of dense layers and LSTM for generating captions.
