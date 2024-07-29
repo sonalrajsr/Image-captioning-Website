@@ -58,4 +58,5 @@ The model architecture includes:
 - Caption Generator: Combination of dense layers and LSTM for generating captions.
 
 ## Model
-![Model](URL "model.png?raw=True")
+
+![App Screenshot](model.png)
