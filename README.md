@@ -56,3 +56,6 @@ The model architecture includes:
 - Image Feature Extractor: VGG16 pre-trained on ImageNet.
 - Text Processing: Tokenizer for converting text to sequences and embedding layers.
 - Caption Generator: Combination of dense layers and LSTM for generating captions.
+
+## Model
+![Alt text](URL "/model.png")
