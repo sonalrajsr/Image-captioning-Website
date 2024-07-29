@@ -12,7 +12,13 @@ https://image-captioning-website.streamlit.app/
 - Upload an image and receive a predicted caption.
 - Uses a pre-trained VGG16 model to extract image features.
 - Deep learning model trained on a dataset of images and captions.
-
+- 
+## Demo
+Visit this link for demo, Working of website and model.
+```
+https://youtu.be/Gqdgt2D9HO4
+```
+[![Watch the video](https://img.youtube.com/vi/Gqdgt2D9HO4/maxresdefault.jpg)](https://www.youtube.com/watch?v=Gqdgt2D9HO4)
 ## Installation
 To get this project up and running locally on your machine, follow these steps:
 
@@ -44,7 +50,6 @@ To start the Streamlit application, run the following command:
 ``` bash
 streamlit run streamlit_app.py
 ```
-
 ## Model Details
 The model architecture includes:
 
