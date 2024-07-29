@@ -15,25 +15,26 @@ https://image-captioning-website.streamlit.app/
 
 ## Installation
 To get this project up and running locally on your machine, follow these steps:
-Clone the repository:
+
+- Clone the repository:
 
 ```bash
-Copy code
-```git clone https://github.com/yourusername/image-captioning.git```
-```cd image-captioning```
-Create and activate a virtual environment:
+git clone https://github.com/yourusername/image-captioning.git
 ```
+``` bash
+cd image-captioning
+```
+- Create and activate a virtual environment:
 
-bash
-Copy code
+```bash
 python -m venv venv
 source venv/bin/activate   # On Windows use `venv\Scripts\activate`
-Install the required dependencies:
+```
+- Install the required dependencies:
 
-bash
-Copy code
+```bash
 pip install -r requirements.txt
-Download the pre-trained model weights and necessary files:
-
-Place the model_weights_epoch_1.h5 file in the model directory.
-Place the all_captions.pkl file in the project root directory.
+```
+- Download the pre-trained model weights and necessary files:
+- Place the model_weights_epoch_1.h5 file in the model directory.
+- Place the all_captions.pkl file in the project root directory.
